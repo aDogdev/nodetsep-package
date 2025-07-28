@@ -9,7 +9,7 @@
 !.yarn/versions
 
 # production
-/build
+/dist
 
 # debug
 npm-debug.log*
