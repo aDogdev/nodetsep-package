@@ -7,6 +7,9 @@
   "files": [
     "src"
   ],
+  "bin": {
+    "nodetsep": "./dist/index.js"
+  },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
