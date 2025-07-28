@@ -20,13 +20,13 @@
     "moduleDetection": "force",
 
     /* Output */
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
 
     /* Library Options */
     "declaration": true,
     "sourceMap": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist"]
 }
