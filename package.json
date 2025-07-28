@@ -16,8 +16,8 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "ci": "pnpm run build && pnpm run check-format && pnpm run test",
-    "format": "prettier --write .",
-    "check-format": "prettier --check .",
+    "format": "prettier --write ./src",
+    "check-format": "prettier --check ./src",
     "test": "vitest run"
   },
   "keywords": [
