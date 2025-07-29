@@ -3,18 +3,18 @@
   "version": "0.0.2",
   "description": "A CLI to quickly initialize Node.js projects with TypeScript, ts-node-dev, ESLint, and Prettier preconfigured.",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
     "dist",
     "templates"
   ],
   "bin": {
-    "nodetsep": "./dist/index.js"
+    "nodetsep": "./dist/src/index.js"
   },
   "scripts": {
     "dev": "nodemon --watch src --exec \"node --loader ts-node/esm\" src/index.ts",
-    "start": "node dist/index.js",
-    "build": "tsc",
+    "start": "node dist/src/index.js",
+    "build": "tsc && cp -r templates dist/",
     "ci": "pnpm run build && pnpm run check-format && pnpm run test",
     "format": "prettier --write ./src ./tests",
     "check-format": "prettier --check ./src ./tests",
