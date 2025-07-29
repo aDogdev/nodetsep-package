@@ -18,7 +18,9 @@
     "ci": "pnpm run build && pnpm run check-format && pnpm run test",
     "format": "prettier --write ./src ./tests",
     "check-format": "prettier --check ./src ./tests",
-    "test": "vitest run"
+    "test": "vitest run",
+    "local-release": "changeset version && changeset publish",
+    "prepublishOnly": "npm run ci"
   },
   "keywords": [
     "cli",
