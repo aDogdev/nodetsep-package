@@ -10,7 +10,7 @@ To create a new project, run the following command in your terminal. Replace `<p
 npx nodetsep <project-name>
 ```
 
-Or
+Or:
 
 ```bash
 pnpm dlx nodetsep <project-name>
@@ -25,7 +25,7 @@ This will create a new folder with a complete setup, including:
 ### Example
 
 ```bash
-npx nodetsep my-awesome-project
+pnpm dlx nodetsep my-awesome-project
 ```
 
 After the command finishes, you can navigate into your new project:
