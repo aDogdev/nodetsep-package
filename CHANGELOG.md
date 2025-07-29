@@ -1,5 +1,11 @@
 # nodetsep
 
+## 0.1.2
+
+### Patch Changes
+
+- 19bfde8: docs: update install instructions in README.md
+
 ## 0.1.1
 
 ### Patch Changes
