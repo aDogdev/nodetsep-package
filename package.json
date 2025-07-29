@@ -1,6 +1,6 @@
 {
   "name": "nodetsep",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A CLI to quickly initialize Node.js projects with TypeScript, ts-node-dev, ESLint, and Prettier preconfigured.",
   "type": "module",
   "main": "dist/src/index.js",
