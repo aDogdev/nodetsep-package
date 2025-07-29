@@ -27,13 +27,13 @@ describe("CLI Scaffolding Tests", () => {
     }
   });
 
-  it("should create the main project folder", () => {
-    runScaffolding(projectPath);
+  it("should create the main project folder", async () => {
+    await runScaffolding(projectPath);
     expect(existsSync(projectPath)).toBe(true);
   });
 
-  it("should create all the template files inside the project folder", () => {
-    runScaffolding(projectPath);
+  it("should create all the template files inside the project folder", async () => {
+    await runScaffolding(projectPath);
 
     const filesInProject = readdirSync(projectPath);
     const expectedFiles = [
@@ -41,6 +41,7 @@ describe("CLI Scaffolding Tests", () => {
       "eslint.config.mjs",
       "package.json",
       "tsconfig.json",
+      "src",
     ];
 
     for (const file of expectedFiles) {
@@ -50,9 +51,9 @@ describe("CLI Scaffolding Tests", () => {
     expect(filesInProject.length).toBe(expectedFiles.length);
   });
 
-  it("should throw an error if no project name is provided", () => {
-    const action = () => runScaffolding("");
-
-    expect(action).toThrow("Project name is required.");
+  it("should throw an error if no project name is provided", async () => {
+    await expect(runScaffolding("")).rejects.toThrow(
+      "Project name is required.",
+    );
   });
 });
