@@ -10,6 +10,12 @@ To create a new project, run the following command in your terminal. Replace `<p
 npx nodetsep <project-name>
 ```
 
+Or
+
+```bash
+pnpm dlx nodetsep <project-name>
+```
+
 This will create a new folder with a complete setup, including:
 - TypeScript configuration (`tsconfig.json`)
 - ESLint and Prettier for code quality and formatting
