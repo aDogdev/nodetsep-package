@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import { resolve } from "path";
-import { mkdirSync, readdirSync, copyFileSync } from "fs";
+import { mkdir, cp } from "fs/promises";
 import { fileURLToPath } from "url";
 
-export function runScaffolding(projectName: string): void {
+export async function runScaffolding(projectName: string): Promise<void> {
   if (!projectName) {
     throw new Error("Project name is required.");
   }
@@ -18,7 +18,7 @@ export function runScaffolding(projectName: string): void {
   console.log(`✅ Creating project in: ${projectPath}`);
 
   try {
-    mkdirSync(projectPath);
+    await mkdir(projectPath);
   } catch (error) {
     const err = error as Error;
     console.error(`❌ Error creating directory: ${err.message}`);
@@ -26,13 +26,8 @@ export function runScaffolding(projectName: string): void {
   }
 
   try {
-    const templateFiles: string[] = readdirSync(templatePath);
-    for (const file of templateFiles) {
-      const sourcePath: string = resolve(templatePath, file);
-      const destinationPath: string = resolve(projectPath, file);
-      copyFileSync(sourcePath, destinationPath);
-      console.log(`📄 Copied ${file}`);
-    }
+    await cp(templatePath, projectPath, { recursive: true });
+    console.log("📄 Copied template files successfully!");
   } catch (error) {
     const e: Error = error as Error;
     console.error(`❌ Error copying template files: ${e.message}`);
@@ -43,13 +38,14 @@ export function runScaffolding(projectName: string): void {
   console.log("Next steps:");
   console.log(`  cd ${projectName}`);
   console.log("  pnpm install");
+  console.log("  pnpm run dev");
 }
 const scriptPath: string | undefined = process.argv[1];
 if (scriptPath && import.meta.url.endsWith(scriptPath)) {
   const projectName = process.argv[2];
   if (projectName) {
     try {
-      runScaffolding(projectName);
+      await runScaffolding(projectName);
     } catch (error) {
       console.error(`\n A critical error occurred. Scaffolding failed.`);
       process.exit(1);
