@@ -5,25 +5,16 @@ on:
     types: [closed]
 
 jobs:
-  delete-branch:
+  delete-merged-branch:
     runs-on: ubuntu-latest
     # This job only runs if the pull request was merged
     if: github.event.pull_request.merged == true
     steps:
-      # The checkout action is not strictly necessary for this operation,
-      # but it's good practice to have it.
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Configure Git for PAT authentication
+        run: git config --global url."https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
       - name: Delete merged branch
-        env:
-          # The PAT_TOKEN secret must be created in the repository's
-          # Settings > Secrets and variables > Actions
-          GH_PAT: ${{ secrets.PAT_TOKEN }}
-          # The full git ref of the branch that was merged
-          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-        run: |
-          # Configure git to use the PAT for authentication
-          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git"
-          # Delete the remote branch
-          git push origin --delete "$BRANCH_NAME"
+        run: git push origin --delete ${{ github.event.pull_request.head.ref }}
