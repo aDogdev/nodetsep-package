@@ -7,13 +7,13 @@ A CLI to quickly initialize Node.js projects with TypeScript, ts-node-dev, ESLin
 To create a new project, run the following command in your terminal. Replace `<project-name>` with the desired name for your new directory.
 
 ```bash
-npx nodetsep <project-name>
+pnpm dlx nodetsep <project-name>
 ```
 
 Or:
 
 ```bash
-pnpm dlx nodetsep <project-name>
+npx nodetsep <project-name>
 ```
 
 This will create a new folder with a complete setup, including:
