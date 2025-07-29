@@ -5,16 +5,13 @@ on:
     types: [closed]
 
 jobs:
-  delete-merged-branch:
+  delete-branch:
     runs-on: ubuntu-latest
-    # This job only runs if the pull request was merged
     if: github.event.pull_request.merged == true
+    permissions:
+      contents: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Configure Git for PAT authentication
-        run: git config --global url."https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/".insteadOf "https://github.com/"
-
       - name: Delete merged branch
-        run: git push origin --delete ${{ github.event.pull_request.head.ref }}
+        uses: fast-flow/github-action-delete-branch@v1
+        with:
+          branch_name: ${{ github.event.pull_request.head.ref }}
