@@ -1,5 +1,11 @@
 # nodetsep
 
+## 0.1.1
+
+### Patch Changes
+
+- 26c0344: republish to include updated README.md in the npm package
+
 ## 0.1.0
 
 ### Minor Changes
