@@ -27,7 +27,7 @@ export async function runScaffolding(projectName: string): Promise<void> {
 
   try {
     await cp(templatePath, projectPath, { recursive: true });
-    console.log("📄 Copied template files successfully!");
+    console.log("✅ Copied template files successfully!");
   } catch (error) {
     const e: Error = error as Error;
     console.error(`❌ Error copying template files: ${e.message}`);
